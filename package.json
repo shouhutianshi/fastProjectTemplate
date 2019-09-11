@@ -12,7 +12,7 @@
 		"prepush": "lint-staged && npm run autofix && npm run lint",
 		"autofix": "eslint --ext .js,.vue src --fix",
 		"lint:css": "stylelint '**/*.vue' --syntax scss",
-		"test": "jest --watch"
+		"test": "jest --watchAll"
 	},
 	"lint-staged": {
 		"*.scss": "stylelint",
@@ -98,7 +98,7 @@
 			"**/tests/**/*.spec.(js|jsx|ts|tsx)"
 		],
 		"collectCoverage": true,
-		"collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
+		"collectCoverageFrom": ["src/components/**/*.{js,vue}", "!**/node_modules/**"],
 		"coverageReporters": ["html", "text-summary"]
 	}
 }
