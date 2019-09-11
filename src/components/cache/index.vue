@@ -12,7 +12,7 @@
 				{{ item.pageName }}
 				<i
 					class="el-icon-circle-close"
-					@click.self="clearCahce(item, idx)"
+					@click.self="clearCache(item, idx)"
 					v-if="idx > 0"
 				></i>
 			</li>
@@ -72,7 +72,7 @@ export default {
 			});
 		},
 		// 清除底部tab
-		clearCahce(item, idx) {
+		clearCache(item, idx) {
 			if (idx) {
 				const temp = this.menuCache.filter(n => n.name !== item.name);
 				this.menuCache = temp;

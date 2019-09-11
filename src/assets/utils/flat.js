@@ -1,3 +1,4 @@
+import deepClone from "./deepClone";
 /**
  * @description 将数据展平
  * @author xiaoyang
@@ -7,7 +8,8 @@
  */
 function flat(data) {
 	let temp = [];
-	data.forEach(item => {
+	const tempData = deepClone(data);
+	tempData.forEach(item => {
 		const children = item.children;
 		delete item.children;
 		temp.push(item);

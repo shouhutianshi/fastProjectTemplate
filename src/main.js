@@ -1,5 +1,5 @@
 import Vue from "vue";
-
+import "babel-polyfill";
 import App from "./App.vue";
 import router from "./router/index";
 import store from "./store";

@@ -1,10 +1,6 @@
 <template>
 	<ul class="cus-breadcrumb no-select">
-		<li
-			v-for="(item, index) in menus"
-			:key="index"
-			class="cus-breadcrumb--item fs14 ml10"
-		>
+		<li v-for="(item, index) in menus" :key="index" class="cus-breadcrumb--item fs14 ml10">
 			<span
 				@click="goto(item.path, index)"
 				:class="{
@@ -12,15 +8,13 @@
 					'font-gray': index !== menus.length - 1,
 					pointer: index !== menus.length - 1
 				}"
-			>
-				{{ item.name }}
+			>{{ item.name }}</span>
+			<span v-if="index !== menus.length - 1">
+				<i class="el-icon-arrow-right"></i>
 			</span>
-			<span v-if="index !== menus.length - 1"
-				><i class="el-icon-arrow-right"></i
-			></span>
-			<span v-if="index === menus.length - 1"
-				><i class="el-icon-arrow-down"></i
-			></span>
+			<span v-if="index === menus.length - 1">
+				<i class="el-icon-arrow-down"></i>
+			</span>
 		</li>
 	</ul>
 </template>
@@ -40,6 +34,7 @@ export default {
 		getBreadcrumb() {
 			this.menus = [];
 			this.$route.matched.forEach(item => {
+				console.log(this.$route.matched);
 				// 重要的是判断breadcrumbName是否数组。是数组，直接返回；反之，转化成数组
 				let name = item.meta.breadcrumbName;
 				const url = this.$storage.get("url");
@@ -49,10 +44,12 @@ export default {
 				}
 				// 循环name，组装面包屑数组
 				name.forEach(n => {
-					this.menus.push({
-						path,
-						name: n
-					});
+					if (n) {
+						this.menus.push({
+							path,
+							name: n
+						});
+					}
 				});
 			});
 		},

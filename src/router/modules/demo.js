@@ -4,7 +4,7 @@ export default [
 		name: "ExchangeComfirmnDetail",
 		component: () => import("@/views/ExchangeComfirmnDetail"),
 		meta: {
-			breadcrumbName: "交易确认明细",
+			breadcrumbName: ["组织管理", "IS组织关系", "IS组织关系02"],
 			keepAlive: true
 		}
 	}

@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
 			path,
 			name,
 			keepAlive,
-			pageName,
+			pageName: Array.isArray(pageName) ? pageName[pageName.length - 1] : pageName,
 			query
 		});
 		if (!cache.find(n => n.name === "Welcome")) {

@@ -1,58 +1,104 @@
 {
-  "name": "fastproj",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "watch": "npm-run-all --parallel watch:*",
-    "watch:mock": "onchange -v -i \"src/mock/db/*.js\" -- npm run mock",
-    "mock": "nodemon node src/mock/server.js",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "prepush": "lint-staged && npm run autofix && npm run lint",
-    "autofix": "eslint --ext .js,.vue src --fix",
-    "lint:css": "stylelint '**/*.vue' --syntax scss"
-  },
-  "lint-staged": {
-    "*.scss": "stylelint",
-    "*.css": "stylelint",
-    "*.json": "jsonlint --quiet",
-    "*.md": "markdownlint --config .markdownlint.json"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "dayjs": "^1.8.12",
-    "element-ui": "^2.7.0",
-    "mockjs": "^1.0.1-beta3",
-    "vue": "^2.6.6",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.1.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
-    "compression-webpack-plugin": "^2.0.0",
-    "connect-multiparty": "^2.2.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0-beta.6",
-    "husky": "^3.0.2",
-    "jsonlint": "^1.6.3",
-    "lint-staged": "^9.2.1",
-    "markdownlint": "^0.15.0",
-    "node-sass": "^4.11.0",
-    "nodemon": "^1.19.1",
-    "npm-run-all": "^4.1.5",
-    "onchange": "^6.0.0",
-    "sass-loader": "^7.1.0",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-processor-html": "^1.0.0",
-    "stylelint-webpack-plugin": "^0.10.5",
-    "uglifyjs-webpack-plugin": "^2.1.2",
-    "vue-template-compiler": "^2.5.21",
-    "webpack-bundle-analyzer": "^3.4.1"
-  }
+	"name": "fastproj",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"watch": "npm-run-all --parallel watch:*",
+		"watch:mock": "onchange -v -i \"src/mock/db/*.js\" -- npm run mock",
+		"mock": "nodemon node src/mock/server.js",
+		"build": "vue-cli-service build",
+		"lint": "vue-cli-service lint",
+		"prepush": "lint-staged && npm run autofix && npm run lint",
+		"autofix": "eslint --ext .js,.vue src --fix",
+		"lint:css": "stylelint '**/*.vue' --syntax scss",
+		"test": "jest --watch"
+	},
+	"lint-staged": {
+		"*.scss": "stylelint",
+		"*.css": "stylelint",
+		"*.json": "jsonlint --quiet",
+		"*.md": "markdownlint --config .markdownlint.json"
+	},
+	"dependencies": {
+		"axios": "^0.18.0",
+		"dayjs": "^1.8.12",
+		"element-ui": "^2.7.0",
+		"mockjs": "^1.0.1-beta3",
+		"vue": "^2.6.6",
+		"vue-router": "^3.0.2",
+		"vuex": "^3.1.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.6.0",
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+		"@vue/cli-plugin-babel": "^3.0.5",
+		"@vue/cli-plugin-eslint": "^3.0.5",
+		"@vue/cli-plugin-unit-jest": "^3.11.0",
+		"@vue/cli-service": "^3.0.5",
+		"@vue/eslint-config-prettier": "^4.0.1",
+		"@vue/server-test-utils": "^1.0.0-beta.29",
+		"@vue/test-utils": "^1.0.0-beta.29",
+		"babel-core": "^7.0.0-beta.41",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^24.9.0",
+		"babel-polyfill": "^6.26.0",
+		"compression-webpack-plugin": "^2.0.0",
+		"connect-multiparty": "^2.2.0",
+		"eslint": "^5.16.0",
+		"eslint-plugin-vue": "^5.0.0-beta.6",
+		"husky": "^3.0.2",
+		"jest": "^24.9.0",
+		"jest-transform-stub": "^2.0.0",
+		"jsonlint": "^1.6.3",
+		"lint-staged": "^9.2.1",
+		"markdownlint": "^0.15.0",
+		"node-sass": "^4.11.0",
+		"nodemon": "^1.19.1",
+		"npm-run-all": "^4.1.5",
+		"onchange": "^6.0.0",
+		"sass-loader": "^7.1.0",
+		"sinon": "^7.4.2",
+		"stylelint": "^9.10.1",
+		"stylelint-config-standard": "^18.2.0",
+		"stylelint-processor-html": "^1.0.0",
+		"stylelint-webpack-plugin": "^0.10.5",
+		"uglifyjs-webpack-plugin": "^2.1.2",
+		"vue-jest": "^3.0.5",
+		"vue-template-compiler": "^2.5.21",
+		"webpack-bundle-analyzer": "^3.4.1"
+	},
+	"jest": {
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"json",
+			"vue"
+		],
+		"transform": {
+			"^.+\\.vue$": "vue-jest",
+			".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+			"^.+\\.jsx?$": "babel-jest"
+		},
+		"transformIgnorePatterns": [
+			"/node_modules/"
+		],
+		"moduleNameMapper": {
+			"^@/(.*)$": "<rootDir>/src/$1",
+			"^~/(.*)$": "<rootDir>/src/components/$1",
+			"^mixins/(.*)$": "<rootDir>/src/mixins/$1",
+			"^utils/(.*)$": "<rootDir>/src/assets/utils/$1",
+			"^http/(.*)$": "<rootDir>/src/assets/http/$1",
+			"^views/(.*)$": "<rootDir>/src/views/$1",
+			"^store/(.*)$": "<rootDir>/src/store/$1",
+			"^images/(.*)$": "<rootDir>/src/assets/images/$1",
+			"^styles/(.*)$": "<rootDir>/src/assets/styles/$1"
+		},
+		"testMatch": [
+			"**/tests/**/*.spec.(js|jsx|ts|tsx)"
+		],
+		"collectCoverage": true,
+		"collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
+		"coverageReporters": ["html", "text-summary"]
+	}
 }
